@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* 🎨 Light Theme (Default) */
+:root {
+  --bg-cream: #FFF8F0;
+  --cream: #FFEDD8;
+  --peach: #D97B5A;
+  --peach-dark: #C56647;
+  --brown: #6B4B3E;
+  --brown-light: #A47B6A;
+  --text-dark: #333;
+  --card-bg: #FFFFFF;
+}
+
+/* 🌙 Dark Theme Override */
+body.dark-theme {
+  --bg-cream: #1e1e1e;
+  --cream: #2b2b2b;
+  --peach: #D97B5A;         /* accent can stay same */
+  --peach-dark: #C56647;
+  --brown: #e8e3de;
+  --brown-light: #b9b3ad;
+  --text-dark: #f2f2f2;
+  --card-bg: #2a2a2a;
+}
+
+/* 🧘 Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-cream) url("https://www.transparenttextures.com/patterns/white-diamond.png") repeat;
+  background-size: 200px 200px;
+  color: var(--text-dark);
+  line-height: 1.7;
+  position: relative;
+  transition: background 0.5s, color 0.5s;
+}
+
+/* Soft overlay to tone down texture (light mode only) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 248, 240, 0.7);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Hide overlay when dark mode is active */
+body.dark-theme::before {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* ============================
+   📍 Navigation Bar
+   ============================ */
+.nav {
+  background: var(--cream);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.5s;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--brown);
+  font-weight: 500;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--peach);
+  transform: translateY(-2px);
+}
+
+/* ============================
+   📦 Main Layout & Containers
+   ============================ */
+.main-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  padding: 3rem 8%;
+}
+
+.content, .sidebar, .card, #contactForm {
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 2rem;
+  transition: background 0.5s;
+}
+
+.content h2, .sidebar h2 {
+  color: var(--peach);
+  margin-bottom: 1rem;
+}
+
+/* ============================
+   🖼 Cards & Sidebar
+   ============================ */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.card-container .card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* ============================
+   💛 Buttons & Interactives
+   ============================ */
+button,
+.btn,
+#openModalBtn,
+#price-btn,
+#theme-btn,
+#count-btn,
+#animate-btn {
+  background: var(--peach);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+button:hover,
+.btn:hover,
+#openModalBtn:hover,
+#price-btn:hover,
+#theme-btn:hover,
+#count-btn:hover,
+#animate-btn:hover {
+  background: var(--peach-dark);
+  transform: translateY(-2px);
+}
+
+/* ============================
+   📩 Contact Form
+   ============================ */
+#contactForm input,
+#contactForm textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid #f3d6cf;
+  border-radius: 12px;
+  background: #fffaf3;
+  font-size: 1rem;
+  color: var(--brown);
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+  border-color: var(--peach);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(217,123,90,0.2);
+}
+
+/* ============================
+   👥 Team Section
+   ============================ */
+.team {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.team .card {
+  flex: 1 1 220px;
+  text-align: center;
+}
+
+.team .card img {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
+
+.team .card h3 {
+  color: var(--brown);
+}
+
+.team .card p {
+  color: var(--brown-light);
+  font-size: 0.95rem;
+}
+
+/* ============================
+   📍 Footer
+   ============================ */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: var(--cream);
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 4rem;
+  transition: background 0.5s, color 0.5s;
+}
+footer a {
+  color: var(--peach);
+  text-decoration: none;
+}
+/* 🌙 Dark Theme Mode */
+body.dark-theme {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+body.dark-theme .header,
+body.dark-theme .footer {
+  background-color: #1f1f1f;
+  color: #f5f5f5;
+}
+
+body.dark-theme a {
+  color: #90caf9;
+}
+
+body.dark-theme #hover-box {
+  background: #1e1e1e;
+  border: 1px solid #333;
+}
+
+body.dark-theme button {
+  background-color: #333;
+  color: #f5f5f5;
+  border: 1px solid #777;
+}
+body.dark-theme button:hover {
+  background-color: #555;
+  border-color: #aaa;
+}
